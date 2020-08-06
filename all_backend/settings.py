@@ -59,8 +59,7 @@ AUTHENTICATION_BACKENDS = [
 
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "https://www.neupytech.com/"
+    "https://www.neupytech.com"
 ]
 
 

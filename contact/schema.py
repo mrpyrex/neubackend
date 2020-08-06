@@ -39,8 +39,9 @@ class CreateContact(graphene.Mutation):
         phone = kwargs.get('phone')
         company = kwargs.get('company')
         message = kwargs.get('message')
+        composition = f" Name: {first_name} {last_name} \n Enquiry: {enquiry} \n Phone number: {phone} \n Email: {email} \n Company: {company} \n Message: {message} "
         recipients = ['ndifrkeumoren@gmail.com']
-        send_mail('Contact Received', message, settings.EMAIL_HOST_USER,
+        send_mail('Contact Received', composition, settings.EMAIL_HOST_USER,
                   recipients, fail_silently=True)
         contact = Contact(**kwargs)
         contact.save()

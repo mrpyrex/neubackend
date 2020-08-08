@@ -28,6 +28,9 @@ class Query(graphene.ObjectType):
                           id=graphene.Int(),
                           )
     postCats = graphene.List(PostCatType)
+
+    postCat = graphene.Field(PostCatType, id=graphene.Int(),)
+
     likes = graphene.List(LikeType)
 
     def resolve_posts(self, info, search=None):
@@ -49,9 +52,21 @@ class Query(graphene.ObjectType):
 
     def resolve_post(self, info, **kwargs):
         id = kwargs.get('id')
+        slug = kwargs.get('slug')
 
         if id is not None:
             return Post.objects.get(pk=id)
+
+        if slug is not None:
+            return Post.objects.get(slug=slug)
+
+        return None
+
+    def resolve_postCat(self, info, **kwargs):
+        id = kwargs.get('id')
+
+        if id is not None:
+            return PostCategory.objects.get(pk=id)
 
         return None
 

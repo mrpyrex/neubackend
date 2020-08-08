@@ -32,6 +32,9 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'blog.apps.BlogConfig',
     'job.apps.JobConfig',
+
+    # Third party Apps
+    'ckeditor',
 ]
 
 GRAPHENE = {
@@ -59,6 +62,7 @@ AUTHENTICATION_BACKENDS = [
 
 
 CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
     "https://www.neupytech.com"
 ]
 
